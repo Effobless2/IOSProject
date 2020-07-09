@@ -18,7 +18,7 @@ struct ContentView: View {
                     Text("My Elements")
                     Image(systemName: "list.bullet")
             }
-            Text("Placeholdered")
+            Sandbox()
                 .tabItem {
                     Text("Placeholder")
                     Image(systemName: "cart")
