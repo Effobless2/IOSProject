@@ -15,14 +15,14 @@
 		8B66BF4524B72296007EBDAC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B66BF4324B72296007EBDAC /* LaunchScreen.storyboard */; };
 		8B66BF5024B72296007EBDAC /* IOSProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66BF4F24B72296007EBDAC /* IOSProjectTests.swift */; };
 		8B66BF5B24B72296007EBDAC /* IOSProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66BF5A24B72296007EBDAC /* IOSProjectUITests.swift */; };
-		8B66BF6A24B725DD007EBDAC /* MyElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66BF6924B725DD007EBDAC /* MyElement.swift */; };
-		8B66BF6C24B726F0007EBDAC /* MyCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66BF6B24B726F0007EBDAC /* MyCollection.swift */; };
+		8B66BF6A24B725DD007EBDAC /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66BF6924B725DD007EBDAC /* Pokemon.swift */; };
+		8B66BF6C24B726F0007EBDAC /* Pokedex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66BF6B24B726F0007EBDAC /* Pokedex.swift */; };
 		8B66BF6E24B734C7007EBDAC /* NewElementForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66BF6D24B734C7007EBDAC /* NewElementForm.swift */; };
 		8B66BF7024B73871007EBDAC /* CollectionOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66BF6F24B73871007EBDAC /* CollectionOverview.swift */; };
-		8B66BF7224B74D96007EBDAC /* ElementList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66BF7124B74D96007EBDAC /* ElementList.swift */; };
 		8B66BF7424B765A0007EBDAC /* Sandbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66BF7324B765A0007EBDAC /* Sandbox.swift */; };
 		8B66BF7624B76646007EBDAC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66BF7524B76646007EBDAC /* ImagePicker.swift */; };
 		8B66BF7824B76BCA007EBDAC /* PhotoCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66BF7724B76BCA007EBDAC /* PhotoCaptureView.swift */; };
+		8BB9F5A624B8A43E001D8629 /* PokemonDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB9F5A524B8A43E001D8629 /* PokemonDescriptionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,14 +57,14 @@
 		8B66BF5624B72296007EBDAC /* IOSProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IOSProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B66BF5A24B72296007EBDAC /* IOSProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSProjectUITests.swift; sourceTree = "<group>"; };
 		8B66BF5C24B72296007EBDAC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8B66BF6924B725DD007EBDAC /* MyElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyElement.swift; sourceTree = "<group>"; };
-		8B66BF6B24B726F0007EBDAC /* MyCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollection.swift; sourceTree = "<group>"; };
+		8B66BF6924B725DD007EBDAC /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
+		8B66BF6B24B726F0007EBDAC /* Pokedex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokedex.swift; sourceTree = "<group>"; };
 		8B66BF6D24B734C7007EBDAC /* NewElementForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewElementForm.swift; sourceTree = "<group>"; };
 		8B66BF6F24B73871007EBDAC /* CollectionOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionOverview.swift; sourceTree = "<group>"; };
-		8B66BF7124B74D96007EBDAC /* ElementList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementList.swift; sourceTree = "<group>"; };
 		8B66BF7324B765A0007EBDAC /* Sandbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sandbox.swift; sourceTree = "<group>"; };
 		8B66BF7524B76646007EBDAC /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		8B66BF7724B76BCA007EBDAC /* PhotoCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureView.swift; sourceTree = "<group>"; };
+		8BB9F5A524B8A43E001D8629 /* PokemonDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDescriptionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,10 +125,10 @@
 				8B66BF4024B72296007EBDAC /* Preview Content */,
 				8B66BF6D24B734C7007EBDAC /* NewElementForm.swift */,
 				8B66BF6F24B73871007EBDAC /* CollectionOverview.swift */,
-				8B66BF7124B74D96007EBDAC /* ElementList.swift */,
 				8B66BF7324B765A0007EBDAC /* Sandbox.swift */,
 				8B66BF7524B76646007EBDAC /* ImagePicker.swift */,
 				8B66BF7724B76BCA007EBDAC /* PhotoCaptureView.swift */,
+				8BB9F5A524B8A43E001D8629 /* PokemonDescriptionView.swift */,
 			);
 			path = IOSProject;
 			sourceTree = "<group>";
@@ -162,8 +162,8 @@
 		8B66BF6824B7251A007EBDAC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8B66BF6924B725DD007EBDAC /* MyElement.swift */,
-				8B66BF6B24B726F0007EBDAC /* MyCollection.swift */,
+				8B66BF6924B725DD007EBDAC /* Pokemon.swift */,
+				8B66BF6B24B726F0007EBDAC /* Pokedex.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -301,11 +301,11 @@
 			files = (
 				8B66BF3924B72293007EBDAC /* AppDelegate.swift in Sources */,
 				8B66BF7024B73871007EBDAC /* CollectionOverview.swift in Sources */,
-				8B66BF7224B74D96007EBDAC /* ElementList.swift in Sources */,
-				8B66BF6C24B726F0007EBDAC /* MyCollection.swift in Sources */,
+				8BB9F5A624B8A43E001D8629 /* PokemonDescriptionView.swift in Sources */,
+				8B66BF6C24B726F0007EBDAC /* Pokedex.swift in Sources */,
 				8B66BF7424B765A0007EBDAC /* Sandbox.swift in Sources */,
 				8B66BF7824B76BCA007EBDAC /* PhotoCaptureView.swift in Sources */,
-				8B66BF6A24B725DD007EBDAC /* MyElement.swift in Sources */,
+				8B66BF6A24B725DD007EBDAC /* Pokemon.swift in Sources */,
 				8B66BF6E24B734C7007EBDAC /* NewElementForm.swift in Sources */,
 				8B66BF7624B76646007EBDAC /* ImagePicker.swift in Sources */,
 				8B66BF3B24B72293007EBDAC /* SceneDelegate.swift in Sources */,

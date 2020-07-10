@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MyElement: Identifiable, Equatable {
+struct Pokemon: Identifiable, Equatable {
     let id = UUID();
     let name: String;
 }

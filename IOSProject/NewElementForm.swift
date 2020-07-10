@@ -13,7 +13,7 @@ struct NewElementForm: View {
     
     @State private var shownImagePicker: Bool = false;
     @State private var image: Image? = nil;
-    var collection: MyCollection;
+    var currentPokedex: Pokedex;
     @State private var name: String = "";
     var body: some View {
         NavigationView {
@@ -28,9 +28,9 @@ struct NewElementForm: View {
                 Section {
                     HStack {
                         Button("Save") {
-                            let element = MyElement(name: self.name);
-                            self.collection.add(element);
-                            self.presentation.wrappedValue.dismiss()
+                            let pokemon = Pokemon(name: self.name);
+                            self.currentPokedex.add(pokemon);
+                            self.presentation.wrappedValue.dismiss();
                         }
                     }
                 }
@@ -49,6 +49,6 @@ struct NewElementForm: View {
 
 struct NewElementForm_Previews: PreviewProvider {
     static var previews: some View {
-        NewElementForm(collection: MyCollection(name: "Caca"))
+        NewElementForm(currentPokedex: Pokedex(name: "Test"))
     }
 }

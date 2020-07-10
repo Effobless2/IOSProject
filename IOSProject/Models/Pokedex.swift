@@ -8,25 +8,25 @@
 
 import Foundation
 
-class MyCollection {
-    private var elements: [MyElement];
+class Pokedex {
+    private var pokemons: [Pokemon];
     var name: String;
     
     init(name: String) {
         self.name = name;
-        elements = []
+        pokemons = []
     }
     
-    init(name: String, elements: [MyElement]) {
+    init(name: String, pokemons: [Pokemon]) {
         self.name = name;
-        self.elements = elements;
+        self.pokemons = pokemons;
     }
     
-    func add(_ element: MyElement) {
-        elements.append(element);
+    func add(_ pokemon: Pokemon) {
+        pokemons.append(pokemon);
     }
     
-    func all() -> [MyElement] {
-        return elements;
+    func all() -> [Pokemon] {
+        return pokemons;
     }
 }

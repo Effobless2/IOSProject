@@ -9,29 +9,30 @@
 import SwiftUI
 
 struct CollectionOverview: View {
-    @State private var isAddingElement = false
-    var collection = MyCollection(name: "Pokedex", elements: [MyElement(name: "Pikachu"), MyElement(name: "Carapuce"), MyElement(name: "Salamèche")]);
+    @State private var isAddingElement = false;
+    var pokedex: Pokedex;
     var body: some View {
         NavigationView {
-            List(self.collection.all()) { element in
-                Text(element.name)
+            List(self.pokedex.all()) { pokemon in
+                NavigationLink(destination: PokemonDescriptionView(pokemon: pokemon)) {
+                    Text(pokemon.name)
+                }
             }
-            .navigationBarTitle(collection.name)
+            .navigationBarTitle(pokedex.name)
             .navigationBarItems(trailing: Button(action: {
                 self.isAddingElement.toggle();
             }) {
                 Image(systemName: "plus")
             })
                 .sheet(isPresented: $isAddingElement) {
-                    NewElementForm(collection: self.collection)
+                    NewElementForm(currentPokedex: self.pokedex)
             }
-            
         }
     }
 }
 
 struct CollectionOverview_Previews: PreviewProvider {
     static var previews: some View {
-        CollectionOverview(collection: MyCollection(name:"", elements:[]))
+        CollectionOverview(pokedex: Pokedex(name:"test", pokemons:[]))
     }
 }

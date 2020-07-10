@@ -9,11 +9,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    var myCollection = MyCollection(name: "Pokedex", elements: [MyElement(name: "Pikachu"), MyElement(name: "Carapuce"), MyElement(name: "Salamèche")]);
+    var myCollection = Pokedex(name: "Johto", pokemons: [Pokemon(name: "Pikachu"), Pokemon(name: "Carapuce"), Pokemon(name: "Salamèche")]);
     
     var body: some View {
         TabView {
-            CollectionOverview(collection: self.myCollection)
+            CollectionOverview(pokedex: self.myCollection)
                 .tabItem {
                     Text("My Elements")
                     Image(systemName: "list.bullet")
