@@ -13,9 +13,11 @@ struct CollectionOverview: View {
     var pokedex: Pokedex;
     var body: some View {
         NavigationView {
-            List(self.pokedex.all()) { pokemon in
+            List(self.pokedex.all().sorted {
+                $0.pokedexNumber < $1.pokedexNumber;
+            }) { pokemon in
                 NavigationLink(destination: PokemonDescriptionView(pokemon: pokemon)) {
-                    Text(pokemon.name)
+                    Text(pokemon.name).foregroundColor(getColorFromType(type: pokemon.type))
                 }
             }
             .navigationBarTitle(pokedex.name)
