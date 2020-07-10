@@ -9,19 +9,10 @@
 import SwiftUI
 
 struct Sandbox: View {
-    @State private var shownImagePicker: Bool = false;
-    @State private var image: Image? = nil;
     var body: some View {
         VStack {
-            image?.resizable()
-                .scaledToFit()
-            Button("Open Camera") {
-                self.shownImagePicker.toggle();
-            }
-        }.sheet(isPresented: self.$shownImagePicker) {
-            PhotoCaptureView(isShown: self.$shownImagePicker, image: self.$image)
+            Text("Let's play together here !")
         }
-        
     }
 }
 

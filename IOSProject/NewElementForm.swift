@@ -10,13 +10,21 @@ import SwiftUI
 
 struct NewElementForm: View {
     @Environment(\.presentationMode) var presentation
-
+    
+    @State private var shownImagePicker: Bool = false;
+    @State private var image: Image? = nil;
     var collection: MyCollection;
     @State private var name: String = "";
     var body: some View {
         NavigationView {
             Form {
                 TextField("Element name", text: $name)
+                image?
+                    .resizable()
+                    .frame(width:150, height: 150)
+                Button("Open Camera") {
+                    self.shownImagePicker.toggle();
+                }
                 Section {
                     HStack {
                         Button("Save") {
@@ -32,6 +40,8 @@ struct NewElementForm: View {
             }) {
                 Text("Cancel")
             })
+        }.sheet(isPresented: self.$shownImagePicker) {
+            PhotoCaptureView(isShown: self.$shownImagePicker, image: self.$image)
         }
         
     }
