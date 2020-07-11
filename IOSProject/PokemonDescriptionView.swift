@@ -33,7 +33,6 @@ struct PokemonDescriptionView: View {
                     
             }.frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
             Text(pokemon.description)
-            Text(self.caught ? "" : "")//MDRRRR
             Spacer()
             Button("Update", action: {
                 self.isEditing.toggle();
@@ -43,7 +42,8 @@ struct PokemonDescriptionView: View {
             self.pokemon.caught.toggle();
             self.caught.toggle();
        }) {
-        Image(pokemon.caught ? "red_ball" : "black_ball")
+        Image(self.caught ? "red_ball" : "black_ball")
+            .renderingMode(.original)
             .resizable()
             .frame(width:20, height: 20)
         })
