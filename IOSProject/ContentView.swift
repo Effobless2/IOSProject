@@ -10,26 +10,23 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) var managedObjectContext;
-    @FetchRequest(fetchRequest: PokemonDAO.fetchAllPokemon()) var allTests:FetchedResults<PokemonDAO>;
-    
-    var myCollection = Pokedex(name: "Johto", pokemons: []);
     //Pokemon(name: "Pikachu", pokedexNumber: 7, type: PokemonType.thunder, description: "Souris Electrique", image: Image("pikachu")), Pokemon(name: "Carapuce", pokedexNumber: 4, type: PokemonType.water, description: "Tortue Hydro", image: Image("carapuce")), Pokemon(name: "Salamèche", pokedexNumber: 1, type: PokemonType.fire, description: "Salamandre de feu", image: Image("salamèche"))
+    @State private var changeView = false;
     
     var body: some View {
-        TabView {
-            CollectionOverview(pokedex: self.myCollection)
-                .tabItem {
-                    Text("My Elements")
-                    Image(systemName: "list.bullet")
-            }.environment(\.managedObjectContext, self.managedObjectContext)
-            Sandbox()
-                .tabItem {
-                    Text("Placeholder")
-                    Image(systemName: "cart")
+        NavigationView {
+            NavigationLink(destination: MainView().environment(\.managedObjectContext, self.managedObjectContext), isActive: $changeView) {
+                Image("front")
+                    .renderingMode(.original)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
             }
-        }.onAppear {
-            for pokemon in self.allTests {
-                self.myCollection.add(pokemon.model);
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
+        .navigationBarTitle("Pokedex")
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+                self.changeView = true;
             }
         }
     }

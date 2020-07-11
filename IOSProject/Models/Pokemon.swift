@@ -72,12 +72,12 @@ class Pokemon: Identifiable, Equatable {
     
     func genDAO(context: NSManagedObjectContext) -> PokemonDAO {
         let result = PokemonDAO(context: context);
-        result.id = self.id;
-        result.name = self.name;
-        result.pokedexNumber = NSNumber(value:self.pokedexNumber);
-        result.pokemonDescription = self.description;
-        result.pokemonType = self.type.rawValue;
-        result.caught = NSNumber(value: self.caught);
+        result.setValue(self.id, forKeyPath: "id");
+        result.setValue(self.name, forKey: "name");
+        result.setValue(NSNumber(value:self.pokedexNumber), forKey: "pokedexNumber");
+        result.setValue(self.description, forKey: "pokemonDescription");
+        result.setValue(self.type.rawValue, forKey: "pokemonType");
+        result.setValue(NSNumber(value: self.caught), forKey: "caught");
         return result;
     }
 }

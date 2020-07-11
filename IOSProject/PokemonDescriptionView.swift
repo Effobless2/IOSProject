@@ -44,6 +44,7 @@ struct PokemonDescriptionView: View {
             self.caught.toggle();
        }) {
         Image(pokemon.caught ? "red_ball" : "black_ball")
+            .renderingMode(.original)
             .resizable()
             .frame(width:20, height: 20)
         })

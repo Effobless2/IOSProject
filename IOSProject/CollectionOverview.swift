@@ -10,28 +10,21 @@ import SwiftUI
 
 struct CollectionOverview: View {
     @Environment(\.managedObjectContext) var managedObjectContext;
-    @State private var isAddingElement = false;
+    var filtered = false;
     var pokedex: Pokedex;
     var body: some View {
-        NavigationView {
-            List(self.pokedex.all().sorted {
+        List(!self.filtered ? self.pokedex.all().sorted {
                 $0.pokedexNumber < $1.pokedexNumber;
-            }) { pokemon in
+            } : self.pokedex.all().sorted {
+                $0.pokedexNumber < $1.pokedexNumber;
+            }.filter {
+                $0.caught
+        }) { pokemon in
                 NavigationLink(destination: PokemonDescriptionView(pokemon: pokemon)) {
                     Text(pokemon.name).foregroundColor(getColorFromType(type: pokemon.type))
                 }
             }
             .navigationBarTitle(pokedex.name)
-            .navigationBarItems(trailing: Button(action: {
-                self.isAddingElement.toggle();
-            }) {
-                Image(systemName: "plus")
-            })
-                .sheet(isPresented: $isAddingElement) {
-                    NewElementForm(currentPokedex: self.pokedex)
-                        .environment(\.managedObjectContext, self.managedObjectContext)
-            }
-        }
     }
 }
 

@@ -19,11 +19,11 @@
 		8B66BF6C24B726F0007EBDAC /* Pokedex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66BF6B24B726F0007EBDAC /* Pokedex.swift */; };
 		8B66BF6E24B734C7007EBDAC /* NewElementForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66BF6D24B734C7007EBDAC /* NewElementForm.swift */; };
 		8B66BF7024B73871007EBDAC /* CollectionOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66BF6F24B73871007EBDAC /* CollectionOverview.swift */; };
-		8B66BF7424B765A0007EBDAC /* Sandbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66BF7324B765A0007EBDAC /* Sandbox.swift */; };
 		8B66BF7624B76646007EBDAC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66BF7524B76646007EBDAC /* ImagePicker.swift */; };
 		8B66BF7824B76BCA007EBDAC /* PhotoCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66BF7724B76BCA007EBDAC /* PhotoCaptureView.swift */; };
 		8BB9F5A624B8A43E001D8629 /* PokemonDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB9F5A524B8A43E001D8629 /* PokemonDescriptionView.swift */; };
 		8BC2D24D24B9B14600F76067 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8BC2D24B24B9B14600F76067 /* DataModel.xcdatamodeld */; };
+		8BE2E8E924BA643D00B0D0CE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE2E8E824BA643D00B0D0CE /* MainView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,11 +62,11 @@
 		8B66BF6B24B726F0007EBDAC /* Pokedex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokedex.swift; sourceTree = "<group>"; };
 		8B66BF6D24B734C7007EBDAC /* NewElementForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewElementForm.swift; sourceTree = "<group>"; };
 		8B66BF6F24B73871007EBDAC /* CollectionOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionOverview.swift; sourceTree = "<group>"; };
-		8B66BF7324B765A0007EBDAC /* Sandbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sandbox.swift; sourceTree = "<group>"; };
 		8B66BF7524B76646007EBDAC /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		8B66BF7724B76BCA007EBDAC /* PhotoCaptureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCaptureView.swift; sourceTree = "<group>"; };
 		8BB9F5A524B8A43E001D8629 /* PokemonDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDescriptionView.swift; sourceTree = "<group>"; };
 		8BC2D24C24B9B14600F76067 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		8BE2E8E824BA643D00B0D0CE /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,13 +125,13 @@
 				8B66BF4624B72296007EBDAC /* Info.plist */,
 				8B66BF4024B72296007EBDAC /* Preview Content */,
 				8B66BF3C24B72293007EBDAC /* ContentView.swift */,
-				8B66BF7324B765A0007EBDAC /* Sandbox.swift */,
 				8B66BF6F24B73871007EBDAC /* CollectionOverview.swift */,
 				8B66BF6D24B734C7007EBDAC /* NewElementForm.swift */,
 				8B66BF7524B76646007EBDAC /* ImagePicker.swift */,
 				8B66BF7724B76BCA007EBDAC /* PhotoCaptureView.swift */,
 				8BB9F5A524B8A43E001D8629 /* PokemonDescriptionView.swift */,
 				8BC2D24B24B9B14600F76067 /* DataModel.xcdatamodeld */,
+				8BE2E8E824BA643D00B0D0CE /* MainView.swift */,
 			);
 			path = IOSProject;
 			sourceTree = "<group>";
@@ -303,10 +303,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B66BF3924B72293007EBDAC /* AppDelegate.swift in Sources */,
+				8BE2E8E924BA643D00B0D0CE /* MainView.swift in Sources */,
 				8B66BF7024B73871007EBDAC /* CollectionOverview.swift in Sources */,
 				8BB9F5A624B8A43E001D8629 /* PokemonDescriptionView.swift in Sources */,
 				8B66BF6C24B726F0007EBDAC /* Pokedex.swift in Sources */,
-				8B66BF7424B765A0007EBDAC /* Sandbox.swift in Sources */,
 				8B66BF7824B76BCA007EBDAC /* PhotoCaptureView.swift in Sources */,
 				8B66BF6A24B725DD007EBDAC /* Pokemon.swift in Sources */,
 				8B66BF6E24B734C7007EBDAC /* NewElementForm.swift in Sources */,
