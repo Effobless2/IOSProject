@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 func getColorFromType(type: PokemonType) -> Color {
     switch (type) {
@@ -51,11 +52,63 @@ class Pokemon: Identifiable, Equatable {
         self.image = image;
     }
     
-    let id = UUID();
+    init(id: UUID, name: String, pokedexNumber: Int, type: PokemonType, description: String, image: Image?) {
+        self.id = id;
+        self.name = name;
+        self.pokedexNumber = pokedexNumber;
+        self.description = description;
+        self.type = type;
+        self.image = image;
+    }
+    
+    var id = UUID();
     var name: String;
     var pokedexNumber: Int;
     var description: String;
     var type: PokemonType;
     var caught: Bool = false;
     var image: Image?;
+    
+    
+    func genDAO(context: NSManagedObjectContext) -> PokemonDAO {
+        let result = PokemonDAO(context: context);
+        result.id = self.id;
+        result.name = self.name;
+        result.pokedexNumber = NSNumber(value:self.pokedexNumber);
+        result.pokemonDescription = self.description;
+        result.pokemonType = self.type.rawValue;
+        result.caught = NSNumber(value: self.caught);
+        return result;
+    }
+}
+
+class PokemonDAO: NSManagedObject, Identifiable {
+    @NSManaged var id: UUID?;
+    @NSManaged var name: String?;
+    @NSManaged var pokedexNumber: NSNumber?;
+    @NSManaged var pokemonDescription: String?;
+    @NSManaged var pokemonType: String?;
+    @NSManaged var caught: NSNumber?;
+    
+    var model: Pokemon {
+        get {
+            return Pokemon(
+                id: self.id!,
+                name: self.name!,
+                pokedexNumber: Int(truncating: self.pokedexNumber!),
+                type: PokemonType(rawValue: self.pokemonType!) ?? PokemonType.fire,
+                description: self.pokemonDescription ?? "",
+                image: Image(self.name ?? "")
+            );
+        }
+    }
+}
+
+extension PokemonDAO {
+    static func fetchAllPokemon() -> NSFetchRequest<PokemonDAO> {
+        let request: NSFetchRequest<PokemonDAO> = PokemonDAO.fetchRequest() as! NSFetchRequest<PokemonDAO>;
+        let sortDescriptor = NSSortDescriptor(key: "id", ascending: true);
+        request.sortDescriptors = [sortDescriptor];
+        return request;
+    }
 }

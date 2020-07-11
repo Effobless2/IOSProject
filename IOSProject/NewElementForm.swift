@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct NewElementForm: View {
+    @Environment(\.managedObjectContext) var managedObjectContext;
     @Environment(\.presentationMode) var presentation
     
     @State private var shownImagePicker: Bool = false;
@@ -44,14 +45,30 @@ struct NewElementForm: View {
                         Button("Save") {
                             if self.currentPokemon == nil && self.currentPokedex != nil {
                                 let pokemon = Pokemon(name: self.name, pokedexNumber: Int(self.pokedexNumber) ?? 0, type: self.pokemonType, description: self.description, image: self.image);
-                                self.currentPokedex?.add(pokemon);
+                                let dao: PokemonDAO = pokemon.genDAO(context: self.managedObjectContext);
+                                do {
+                                    try self.managedObjectContext.save();
+                                    self.currentPokedex?.add(dao.model);
+                                } catch {
+                                    print(error);
+                                }
+                                
+                                
                             } else {
                                 self.currentPokemon?.name = self.name;
                                 self.currentPokemon?.description = self.description;
                                 self.currentPokemon?.type = self.pokemonType;
                                 self.currentPokemon?.pokedexNumber = Int(self.pokedexNumber) ?? 0;
                                 self.currentPokemon?.image = self.image;
+                                let dao: PokemonDAO = self.currentPokemon!.genDAO(context: self.managedObjectContext);
+                                do {
+                                    try self.managedObjectContext.save();
+                                    self.currentPokedex?.add(dao.model);
+                                } catch {
+                                    print(error);
+                                }
                             }
+                            
                             self.presentation.wrappedValue.dismiss();
                         }
                     }
@@ -68,7 +85,7 @@ struct NewElementForm: View {
             if self.currentPokemon != nil {
                 self.image = self.currentPokemon!.image;
                 self.name = self.currentPokemon!.name;
-                self.pokedexNumber = "\(self.currentPokemon!.pokedexNumber)";
+                self.pokedexNumber = String(self.currentPokemon!.pokedexNumber);
                 self.pokemonType = self.currentPokemon!.type;
                 self.description = self.currentPokemon!.description;
             }

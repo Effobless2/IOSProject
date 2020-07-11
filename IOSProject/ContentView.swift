@@ -9,7 +9,11 @@
 import SwiftUI
 
 struct ContentView: View {
-    var myCollection = Pokedex(name: "Johto", pokemons: [Pokemon(name: "Pikachu", pokedexNumber: 7, type: PokemonType.thunder, description: "Souris Electrique", image: Image("pikachu")), Pokemon(name: "Carapuce", pokedexNumber: 4, type: PokemonType.water, description: "Tortue Hydro", image: Image("carapuce")), Pokemon(name: "Salamèche", pokedexNumber: 1, type: PokemonType.fire, description: "Salamandre de feu", image: Image("salamèche"))]);
+    @Environment(\.managedObjectContext) var managedObjectContext;
+    @FetchRequest(fetchRequest: PokemonDAO.fetchAllPokemon()) var allTests:FetchedResults<PokemonDAO>;
+    
+    var myCollection = Pokedex(name: "Johto", pokemons: []);
+    //Pokemon(name: "Pikachu", pokedexNumber: 7, type: PokemonType.thunder, description: "Souris Electrique", image: Image("pikachu")), Pokemon(name: "Carapuce", pokedexNumber: 4, type: PokemonType.water, description: "Tortue Hydro", image: Image("carapuce")), Pokemon(name: "Salamèche", pokedexNumber: 1, type: PokemonType.fire, description: "Salamandre de feu", image: Image("salamèche"))
     
     var body: some View {
         TabView {
@@ -17,11 +21,15 @@ struct ContentView: View {
                 .tabItem {
                     Text("My Elements")
                     Image(systemName: "list.bullet")
-            }
+            }.environment(\.managedObjectContext, self.managedObjectContext)
             Sandbox()
                 .tabItem {
                     Text("Placeholder")
                     Image(systemName: "cart")
+            }
+        }.onAppear {
+            for pokemon in self.allTests {
+                self.myCollection.add(pokemon.model);
             }
         }
     }

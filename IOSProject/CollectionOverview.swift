@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct CollectionOverview: View {
+    @Environment(\.managedObjectContext) var managedObjectContext;
     @State private var isAddingElement = false;
     var pokedex: Pokedex;
     var body: some View {
@@ -28,6 +29,7 @@ struct CollectionOverview: View {
             })
                 .sheet(isPresented: $isAddingElement) {
                     NewElementForm(currentPokedex: self.pokedex)
+                        .environment(\.managedObjectContext, self.managedObjectContext)
             }
         }
     }
