@@ -14,7 +14,7 @@ struct NewElementForm: View {
     
     @State private var shownImagePicker: Bool = false;
     
-    var currentPokedex: Pokedex? = nil;
+    @Binding var currentPokedex: [Pokemon];
     var currentPokemon: Pokemon? = nil;
     @State private var image: Data? = nil;
     @State private var name: String = "";
@@ -47,12 +47,12 @@ struct NewElementForm: View {
                 Section {
                     HStack {
                         Button(action: {
-                            if self.currentPokemon == nil && self.currentPokedex != nil {
+                            if self.currentPokemon == nil {
                                 let pokemon = Pokemon(name: self.name, pokedexNumber: Int(self.pokedexNumber) ?? 0, type: self.pokemonType, description: self.description, image: self.image);
                                 let dao: PokemonDAO = pokemon.genDAO(context: self.managedObjectContext);
                                 do {
                                     try self.managedObjectContext.save();
-                                    self.currentPokedex?.add(dao.model);
+                                    self.currentPokedex.append(dao.model);
                                 } catch {
                                     print(error);
                                 }
@@ -67,7 +67,7 @@ struct NewElementForm: View {
                                 let dao: PokemonDAO = self.currentPokemon!.genDAO(context: self.managedObjectContext);
                                 do {
                                     try self.managedObjectContext.save();
-                                    self.currentPokedex?.add(dao.model);
+                                    self.currentPokedex.append(dao.model);
                                 } catch {
                                     print(error);
                                 }
@@ -101,7 +101,8 @@ struct NewElementForm: View {
 }
 
 struct NewElementForm_Previews: PreviewProvider {
+    @State static var pokemons: [Pokemon] = [];
     static var previews: some View {
-        NewElementForm(currentPokedex: Pokedex(name: "Test"))
+        NewElementForm(currentPokedex: $pokemons)
     }
 }

@@ -12,6 +12,7 @@ struct PokemonDescriptionView: View {
     let pokemon: Pokemon;
     @State var caught: Bool = false;
     @State private var isEditing = false;
+    @Binding var pokedex: [Pokemon];
 
     var body: some View {
         VStack {
@@ -61,13 +62,14 @@ struct PokemonDescriptionView: View {
         .onAppear {
             self.caught = self.pokemon.caught;
         }.sheet(isPresented: $isEditing) {
-            NewElementForm(currentPokedex: nil, currentPokemon: self.pokemon)
+            NewElementForm(currentPokedex: self.$pokedex, currentPokemon: self.pokemon)
         }
     }
 }
 
 struct PokemonDescriptionView_Previews: PreviewProvider {
+    @State static var pokemons: [Pokemon] = [];
     static var previews: some View {
-        PokemonDescriptionView(pokemon: Pokemon(name: "test", pokedexNumber: 0, type: PokemonType.fire, description: "Test", image: nil))
+        PokemonDescriptionView(pokemon: Pokemon(name: "String", pokedexNumber: 0, type: PokemonType.fire, description: "String"), pokedex: $pokemons)
     }
 }
