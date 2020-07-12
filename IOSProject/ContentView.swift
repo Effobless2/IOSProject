@@ -18,13 +18,15 @@ struct ContentView: View {
         TabView {
             CollectionOverview(pokedex: self.$pokedex)
                 .tabItem {
-                    Text("My Elements")
+                    Text("Pokedex")
                     Image(systemName: "list.bullet")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
             }.environment(\.managedObjectContext, self.managedObjectContext)
             CollectionOverview(filtered: true, pokedex: self.$pokedex)
                 .tabItem {
-                    Text("Placeholder")
-                    Image(systemName: "cart")
+                    Text("Caught")
+                    Image(systemName: "heart.fill")
             }.environment(\.managedObjectContext, self.managedObjectContext)
         }.onAppear {
             for pokemon in self.allTests {
