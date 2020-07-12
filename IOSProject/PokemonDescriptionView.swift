@@ -26,7 +26,12 @@ struct PokemonDescriptionView: View {
                     }
                 }.padding()
                 Spacer()
-                pokemon.image?
+                pokemon.image != nil ?
+                    Image(uiImage: UIImage(data: pokemon.image!)!)
+                    .resizable()
+                    .frame(width:150, height: 150)
+                    .padding()
+                    : Image("black_ball")
                     .resizable()
                     .frame(width:150, height: 150)
                     .padding()
@@ -47,8 +52,10 @@ struct PokemonDescriptionView: View {
             .resizable()
             .frame(width:20, height: 20)
         })
-        .background(pokemon.image?
+        .background(pokemon.image != nil ? Image(uiImage: UIImage(data: pokemon.image!)!)
             .resizable()
+            .frame(width:300, height: 300)
+            .opacity(0.3) : Image("black_ball").resizable()
             .frame(width:300, height: 300)
             .opacity(0.3))
         .onAppear {
@@ -61,6 +68,6 @@ struct PokemonDescriptionView: View {
 
 struct PokemonDescriptionView_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonDescriptionView(pokemon: Pokemon(name: "test", pokedexNumber: 0, type: PokemonType.fire, description: "Test", image: Image("carapuce")))
+        PokemonDescriptionView(pokemon: Pokemon(name: "test", pokedexNumber: 0, type: PokemonType.fire, description: "Test", image: nil))
     }
 }

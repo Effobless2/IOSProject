@@ -44,7 +44,7 @@ class Pokemon: Identifiable, Equatable {
         self.image = nil;
     }
     
-    init(name: String, pokedexNumber: Int, type: PokemonType, description: String, image: Image?) {
+    init(name: String, pokedexNumber: Int, type: PokemonType, description: String, image: Data?) {
         self.name = name;
         self.pokedexNumber = pokedexNumber;
         self.description = description;
@@ -52,7 +52,7 @@ class Pokemon: Identifiable, Equatable {
         self.image = image;
     }
     
-    init(id: UUID, name: String, pokedexNumber: Int, type: PokemonType, description: String, image: Image?) {
+    init(id: UUID, name: String, pokedexNumber: Int, type: PokemonType, description: String, image: Data?) {
         self.id = id;
         self.name = name;
         self.pokedexNumber = pokedexNumber;
@@ -67,7 +67,7 @@ class Pokemon: Identifiable, Equatable {
     var description: String;
     var type: PokemonType;
     var caught: Bool = false;
-    var image: Image?;
+    var image: Data?;
     
     
     func genDAO(context: NSManagedObjectContext) -> PokemonDAO {
@@ -78,6 +78,7 @@ class Pokemon: Identifiable, Equatable {
         result.pokemonDescription = self.description;
         result.pokemonType = self.type.rawValue;
         result.caught = NSNumber(value: self.caught);
+        result.image = NSData(data: self.image ?? Data.init(count: 0));
         return result;
     }
 }
@@ -89,6 +90,7 @@ class PokemonDAO: NSManagedObject, Identifiable {
     @NSManaged var pokemonDescription: String?;
     @NSManaged var pokemonType: String?;
     @NSManaged var caught: NSNumber?;
+    @NSManaged var image: NSData?;
     
     var model: Pokemon {
         get {
@@ -98,7 +100,7 @@ class PokemonDAO: NSManagedObject, Identifiable {
                 pokedexNumber: Int(truncating: self.pokedexNumber!),
                 type: PokemonType(rawValue: self.pokemonType!) ?? PokemonType.fire,
                 description: self.pokemonDescription ?? "",
-                image: Image(self.name ?? "")
+                image: self.image != nil ? UIImage(data: self.image! as Data)!.pngData() : nil
             );
         }
     }

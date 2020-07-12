@@ -3,12 +3,13 @@
     <entity name="PokemonDAO" representedClassName=".PokemonDAO" syncable="YES">
         <attribute name="caught" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="pokedexNumber" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="pokemonDescription" optional="YES" attributeType="String"/>
         <attribute name="pokemonType" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="PokemonDAO" positionX="-54" positionY="9" width="128" height="133"/>
+        <element name="PokemonDAO" positionX="-54" positionY="9" width="128" height="148"/>
     </elements>
 </model>

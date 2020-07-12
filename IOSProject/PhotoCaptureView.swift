@@ -10,7 +10,7 @@ import SwiftUI
 
 struct PhotoCaptureView: View {
     @Binding var isShown: Bool;
-    @Binding var image: Image?;
+    @Binding var image: Data?;
     var body: some View {
         ImagePicker(isShown: $isShown, image: $image)
     }
@@ -18,6 +18,6 @@ struct PhotoCaptureView: View {
 
 struct PhotoCaptureView_Previews: PreviewProvider {
     static var previews: some View {
-        PhotoCaptureView(isShown: .constant(false), image: .constant(Image("")))
+        PhotoCaptureView(isShown: .constant(false), image: .constant(nil))
     }
 }

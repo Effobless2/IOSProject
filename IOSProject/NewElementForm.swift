@@ -16,7 +16,7 @@ struct NewElementForm: View {
     
     var currentPokedex: Pokedex? = nil;
     var currentPokemon: Pokemon? = nil;
-    @State private var image: Image? = nil;
+    @State private var image: Data? = nil;
     @State private var name: String = "";
     @State private var pokedexNumber: String = "";
     @State private var pokemonType: PokemonType = PokemonType.fire;
@@ -34,7 +34,11 @@ struct NewElementForm: View {
                     }
                 }
                 TextField("Description", text: $description)
-                image?
+                image != nil ?
+                    Image(uiImage: UIImage(data: image!)!)
+                    .resizable()
+                    .frame(width:150, height: 150)
+                    : Image("black_ball")
                     .resizable()
                     .frame(width:150, height: 150)
                 Button("Open Camera") {
@@ -42,7 +46,7 @@ struct NewElementForm: View {
                 }
                 Section {
                     HStack {
-                        Button("Save") {
+                        Button(action: {
                             if self.currentPokemon == nil && self.currentPokedex != nil {
                                 let pokemon = Pokemon(name: self.name, pokedexNumber: Int(self.pokedexNumber) ?? 0, type: self.pokemonType, description: self.description, image: self.image);
                                 let dao: PokemonDAO = pokemon.genDAO(context: self.managedObjectContext);
@@ -70,7 +74,9 @@ struct NewElementForm: View {
                             }
                             
                             self.presentation.wrappedValue.dismiss();
-                        }
+                        }, label: {
+                            Text("Save")
+                        }).disabled(self.name.isEmpty || self.pokedexNumber.isEmpty || self.description.isEmpty || self.image == nil)
                     }
                 }
                 
