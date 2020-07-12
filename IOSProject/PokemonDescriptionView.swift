@@ -36,9 +36,10 @@ struct PokemonDescriptionView: View {
                     .resizable()
                     .frame(width:150, height: 150)
                     .padding()
-                    
             }.frame(minWidth: 0, maxWidth: .infinity, alignment: .topLeading)
             Text(pokemon.description)
+                .multilineTextAlignment(.center)
+                .padding()
             Spacer()
             Button("Update", action: {
                 self.isEditing.toggle();
